@@ -4,7 +4,7 @@
 #
 Name     : MarkupSafe
 Version  : 0.23
-Release  : 11
+Release  : 12
 URL      : https://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-0.23.tar.gz
 Source0  : https://pypi.python.org/packages/source/M/MarkupSafe/MarkupSafe-0.23.tar.gz
 Summary  : Implements a XML/HTML/XHTML Markup safe string for Python
