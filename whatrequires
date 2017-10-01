@@ -10,6 +10,7 @@ at-spi2-core
 atk
 babl
 cheese
+colord
 compat-llvm-soname4
 darktable
 faba-icon-theme
