@@ -37,6 +37,7 @@ libsoup
 llvm
 moka-icon-theme
 nautilus
+nodejs
 notebook
 pango
 pytest-cov
