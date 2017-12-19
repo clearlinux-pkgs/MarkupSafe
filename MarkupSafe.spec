@@ -4,7 +4,7 @@
 #
 Name     : MarkupSafe
 Version  : 1.0
-Release  : 31
+Release  : 32
 URL      : https://pypi.debian.net/MarkupSafe/MarkupSafe-1.0.tar.gz
 Source0  : https://pypi.debian.net/MarkupSafe/MarkupSafe-1.0.tar.gz
 Summary  : Implements a XML/HTML/XHTML Markup safe string for Python
