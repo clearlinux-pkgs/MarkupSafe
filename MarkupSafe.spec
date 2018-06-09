@@ -4,13 +4,12 @@
 #
 Name     : MarkupSafe
 Version  : 1.0
-Release  : 39
+Release  : 40
 URL      : https://pypi.debian.net/MarkupSafe/MarkupSafe-1.0.tar.gz
 Source0  : https://pypi.debian.net/MarkupSafe/MarkupSafe-1.0.tar.gz
 Summary  : Implements a XML/HTML/XHTML Markup safe string for Python
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: MarkupSafe-legacypython
 Requires: MarkupSafe-python3
 Requires: MarkupSafe-python
 BuildRequires : pbr
@@ -58,7 +57,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523049137
+export SOURCE_DATE_EPOCH=1528556456
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -68,7 +67,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1523049137
+export SOURCE_DATE_EPOCH=1528556456
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force

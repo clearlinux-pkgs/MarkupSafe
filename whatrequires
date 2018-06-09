@@ -3,6 +3,8 @@ Cython
 FreeRDP
 Jinja2
 Keras
+Keras_Applications
+Keras_Preprocessing
 Mako
 PyWavelets
 R-fastcluster
@@ -18,6 +20,7 @@ bash_kernel
 ceph
 cheese
 colord
+compat-gtksourceview-soname3
 compat-llvm-soname4
 compat-opencv-soname32
 compat-opencv-soname33
@@ -37,7 +40,9 @@ gnome-control-center
 gnome-music
 gnome-photos
 gnome-settings-daemon
+gnome-shell
 gnome-system-monitor
+gnome-terminal
 gobject-introspection
 gom
 graphene
@@ -47,11 +52,14 @@ gst-plugins-good
 gstreamer
 gstreamer-vaapi
 gtk+
+gtksourceview
+gvfs
 h5py
 harfbuzz
 hexchat
 hyperscan
 ibus
+intel-gpu-tools
 ipykernel
 ipython
 ipython-sql
@@ -61,6 +69,7 @@ jupyter-notebook-gist
 jupyter_client
 jupyterlab
 jupyterlab_launcher
+libdazzle
 libdnf
 libgepub
 libgudev
@@ -71,6 +80,7 @@ libsoup
 llvm
 matplotlib
 moka-icon-theme
+mutter
 nautilus
 nbsphinx
 notebook
@@ -78,6 +88,7 @@ numba
 numpy
 numpydoc
 opencv
+orca
 ostree
 pandas
 pango
