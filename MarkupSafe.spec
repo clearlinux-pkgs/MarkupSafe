@@ -14,7 +14,7 @@ Requires: MarkupSafe-python3
 Requires: MarkupSafe-python
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
