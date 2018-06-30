@@ -4,19 +4,22 @@
 #
 Name     : MarkupSafe
 Version  : 1.0
-Release  : 43
+Release  : 44
 URL      : https://pypi.debian.net/MarkupSafe/MarkupSafe-1.0.tar.gz
 Source0  : https://pypi.debian.net/MarkupSafe/MarkupSafe-1.0.tar.gz
 Summary  : Implements a XML/HTML/XHTML Markup safe string for Python
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: MarkupSafe-python3
+Requires: MarkupSafe-license
 Requires: MarkupSafe-python
 BuildRequires : pbr
 BuildRequires : pip
-
+BuildRequires : python-core
+BuildRequires : python3-core
 BuildRequires : python3-dev
 BuildRequires : setuptools
+BuildRequires : setuptools-legacypython
 
 %description
 ==========
@@ -28,6 +31,14 @@ Requires: python-core
 
 %description legacypython
 legacypython components for the MarkupSafe package.
+
+
+%package license
+Summary: license components for the MarkupSafe package.
+Group: Default
+
+%description license
+license components for the MarkupSafe package.
 
 
 %package python
@@ -57,7 +68,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528556456
+export SOURCE_DATE_EPOCH=1530372993
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -65,10 +76,12 @@ python3 setup.py build -b py3
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1528556456
+export SOURCE_DATE_EPOCH=1530372993
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/MarkupSafe
+cp LICENSE %{buildroot}/usr/share/doc/MarkupSafe/LICENSE
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 echo ----[ mark ]----
@@ -81,6 +94,10 @@ echo ----[ mark ]----
 %files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/MarkupSafe/LICENSE
 
 %files python
 %defattr(-,root,root,-)
