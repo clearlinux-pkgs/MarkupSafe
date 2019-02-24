@@ -5,17 +5,17 @@
 # Source0 file verified with key 0x7A1C87E3F5BC42A8 (davidism@gmail.com)
 #
 Name     : MarkupSafe
-Version  : 1.1.0
-Release  : 51
-URL      : https://files.pythonhosted.org/packages/ac/7e/1b4c2e05809a4414ebce0892fe1e32c14ace86ca7d50c70f00979ca9b3a3/MarkupSafe-1.1.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/ac/7e/1b4c2e05809a4414ebce0892fe1e32c14ace86ca7d50c70f00979ca9b3a3/MarkupSafe-1.1.0.tar.gz
-Source99 : https://files.pythonhosted.org/packages/ac/7e/1b4c2e05809a4414ebce0892fe1e32c14ace86ca7d50c70f00979ca9b3a3/MarkupSafe-1.1.0.tar.gz.asc
+Version  : 1.1.1
+Release  : 52
+URL      : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
+Source99 : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz.asc
 Summary  : Safely add untrusted strings to HTML/XML markup.
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: MarkupSafe-license = %{version}-%{release}
 Requires: MarkupSafe-python = %{version}-%{release}
 Requires: MarkupSafe-python3 = %{version}-%{release}
+Requires: Sphinx
 BuildRequires : buildreq-distutils23
 BuildRequires : buildreq-distutils3
 BuildRequires : pluggy
@@ -25,17 +25,13 @@ BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
+MarkupSafe
 ==========
-        
-        MarkupSafe implements a text object that escapes characters so it is
-        safe to use in HTML and XML. Characters that have special meanings are
-        replaced so that they display as the actual characters. This mitigates
-        injection attacks, meaning untrusted user input can safely be displayed
-        on a page.
-        
-        
-        Installing
-        ----------
+MarkupSafe implements a text object that escapes characters so it is
+safe to use in HTML and XML. Characters that have special meanings are
+replaced so that they display as the actual characters. This mitigates
+injection attacks, meaning untrusted user input can safely be displayed
+on a page.
 
 %package legacypython
 Summary: legacypython components for the MarkupSafe package.
@@ -44,14 +40,6 @@ Requires: python-core
 
 %description legacypython
 legacypython components for the MarkupSafe package.
-
-
-%package license
-Summary: license components for the MarkupSafe package.
-Group: Default
-
-%description license
-license components for the MarkupSafe package.
 
 
 %package python
@@ -74,22 +62,20 @@ python3 components for the MarkupSafe package.
 
 
 %prep
-%setup -q -n MarkupSafe-1.1.0
+%setup -q -n MarkupSafe-1.1.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541513555
+export SOURCE_DATE_EPOCH=1551020498
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1541513555
+export SOURCE_DATE_EPOCH=1551020498
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/MarkupSafe
-cp LICENSE.rst %{buildroot}/usr/share/package-licenses/MarkupSafe/LICENSE.rst
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 echo ----[ mark ]----
@@ -102,10 +88,6 @@ echo ----[ mark ]----
 %files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/MarkupSafe/LICENSE.rst
 
 %files python
 %defattr(-,root,root,-)
