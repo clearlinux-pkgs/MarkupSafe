@@ -6,16 +6,16 @@
 #
 Name     : MarkupSafe
 Version  : 1.1.1
-Release  : 52
+Release  : 53
 URL      : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
 Source99 : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz.asc
 Summary  : Safely add untrusted strings to HTML/XML markup.
 Group    : Development/Tools
 License  : BSD-3-Clause
+Requires: MarkupSafe-license = %{version}-%{release}
 Requires: MarkupSafe-python = %{version}-%{release}
 Requires: MarkupSafe-python3 = %{version}-%{release}
-Requires: Sphinx
 BuildRequires : buildreq-distutils23
 BuildRequires : buildreq-distutils3
 BuildRequires : pluggy
@@ -40,6 +40,14 @@ Requires: python-core
 
 %description legacypython
 legacypython components for the MarkupSafe package.
+
+
+%package license
+Summary: license components for the MarkupSafe package.
+Group: Default
+
+%description license
+license components for the MarkupSafe package.
 
 
 %package python
@@ -69,13 +77,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551020498
+export SOURCE_DATE_EPOCH=1551026752
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1551020498
+export SOURCE_DATE_EPOCH=1551026752
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/MarkupSafe
+cp LICENSE.rst %{buildroot}/usr/share/package-licenses/MarkupSafe/LICENSE.rst
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 echo ----[ mark ]----
@@ -88,6 +98,10 @@ echo ----[ mark ]----
 %files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/MarkupSafe/LICENSE.rst
 
 %files python
 %defattr(-,root,root,-)
