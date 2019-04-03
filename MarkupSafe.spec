@@ -6,7 +6,7 @@
 #
 Name     : MarkupSafe
 Version  : 1.1.1
-Release  : 54
+Release  : 55
 URL      : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
 Source99 : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz.asc
@@ -16,7 +16,6 @@ License  : BSD-3-Clause
 Requires: MarkupSafe-license = %{version}-%{release}
 Requires: MarkupSafe-python = %{version}-%{release}
 Requires: MarkupSafe-python3 = %{version}-%{release}
-BuildRequires : buildreq-distutils23
 BuildRequires : buildreq-distutils3
 BuildRequires : pluggy
 BuildRequires : py-python
@@ -32,15 +31,6 @@ safe to use in HTML and XML. Characters that have special meanings are
 replaced so that they display as the actual characters. This mitigates
 injection attacks, meaning untrusted user input can safely be displayed
 on a page.
-
-%package legacypython
-Summary: legacypython components for the MarkupSafe package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the MarkupSafe package.
-
 
 %package license
 Summary: license components for the MarkupSafe package.
@@ -77,27 +67,22 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551026752
-python2 setup.py build -b py2
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1554322329
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
-export SOURCE_DATE_EPOCH=1551026752
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/MarkupSafe
 cp LICENSE.rst %{buildroot}/usr/share/package-licenses/MarkupSafe/LICENSE.rst
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files license
 %defattr(0644,root,root,0755)
