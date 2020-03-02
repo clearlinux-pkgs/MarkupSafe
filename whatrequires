@@ -5,6 +5,4 @@ Jinja2
 Mako
 Sphinx
 alembic
-deprecated-Jinja2
-deprecated-Sphinx
 dogpile.cache

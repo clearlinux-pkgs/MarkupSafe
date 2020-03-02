@@ -6,10 +6,10 @@
 #
 Name     : MarkupSafe
 Version  : 1.1.1
-Release  : 61
+Release  : 62
 URL      : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
-Source99 : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz.asc
+Source1  : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz.asc
 Summary  : Safely add untrusted strings to HTML/XML markup.
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -54,6 +54,7 @@ python components for the MarkupSafe package.
 Summary: python3 components for the MarkupSafe package.
 Group: Default
 Requires: python3-core
+Provides: pypi(MarkupSafe)
 
 %description python3
 python3 components for the MarkupSafe package.
@@ -61,13 +62,20 @@ python3 components for the MarkupSafe package.
 
 %prep
 %setup -q -n MarkupSafe-1.1.1
+cd %{_builddir}/MarkupSafe-1.1.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1554322329
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1583173120
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -75,7 +83,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/MarkupSafe
-cp LICENSE.rst %{buildroot}/usr/share/package-licenses/MarkupSafe/LICENSE.rst
+cp %{_builddir}/MarkupSafe-1.1.1/LICENSE.rst %{buildroot}/usr/share/package-licenses/MarkupSafe/e32a549b135c4b2b268107adc12d13cca2ca1e8c
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -86,7 +94,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/MarkupSafe/LICENSE.rst
+/usr/share/package-licenses/MarkupSafe/e32a549b135c4b2b268107adc12d13cca2ca1e8c
 
 %files python
 %defattr(-,root,root,-)
