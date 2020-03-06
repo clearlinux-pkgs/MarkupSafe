@@ -6,7 +6,7 @@
 #
 Name     : MarkupSafe
 Version  : 1.1.1
-Release  : 62
+Release  : 63
 URL      : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz
 Source1  : https://files.pythonhosted.org/packages/b9/2e/64db92e53b86efccfaea71321f597fa2e1b2bd3853d8ce658568f7a13094/MarkupSafe-1.1.1.tar.gz.asc
@@ -24,13 +24,17 @@ BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
-MarkupSafe
 ==========
-MarkupSafe implements a text object that escapes characters so it is
-safe to use in HTML and XML. Characters that have special meanings are
-replaced so that they display as the actual characters. This mitigates
-injection attacks, meaning untrusted user input can safely be displayed
-on a page.
+        
+        MarkupSafe implements a text object that escapes characters so it is
+        safe to use in HTML and XML. Characters that have special meanings are
+        replaced so that they display as the actual characters. This mitigates
+        injection attacks, meaning untrusted user input can safely be displayed
+        on a page.
+        
+        
+        Installing
+        ----------
 
 %package license
 Summary: license components for the MarkupSafe package.
@@ -54,7 +58,7 @@ python components for the MarkupSafe package.
 Summary: python3 components for the MarkupSafe package.
 Group: Default
 Requires: python3-core
-Provides: pypi(MarkupSafe)
+Provides: pypi(markupsafe)
 
 %description python3
 python3 components for the MarkupSafe package.
@@ -69,8 +73,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583173120
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1583453181
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
