@@ -4,6 +4,5 @@ Flask
 Jinja2
 Mako
 Sphinx
-alembic
-dogpile.cache
-performance
+qtwebengine
+salt
