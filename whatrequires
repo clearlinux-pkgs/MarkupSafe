@@ -4,5 +4,6 @@ Flask
 Jinja2
 Mako
 Sphinx
+ansible
 qtwebengine
 salt
