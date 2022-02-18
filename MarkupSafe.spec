@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x7A1C87E3F5BC42A8 (davidism@gmail.com)
 #
 Name     : MarkupSafe
-Version  : 2.0.1
-Release  : 82
-URL      : https://files.pythonhosted.org/packages/bf/10/ff66fea6d1788c458663a84d88787bae15d45daa16f6b3ef33322a51fc7e/MarkupSafe-2.0.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/bf/10/ff66fea6d1788c458663a84d88787bae15d45daa16f6b3ef33322a51fc7e/MarkupSafe-2.0.1.tar.gz
-Source1  : https://files.pythonhosted.org/packages/bf/10/ff66fea6d1788c458663a84d88787bae15d45daa16f6b3ef33322a51fc7e/MarkupSafe-2.0.1.tar.gz.asc
+Version  : 2.1.0
+Release  : 83
+URL      : https://files.pythonhosted.org/packages/62/0f/52c009332fdadd484e898dc8f2acca0663c1031b3517070fd34ad9c1b64e/MarkupSafe-2.1.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/62/0f/52c009332fdadd484e898dc8f2acca0663c1031b3517070fd34ad9c1b64e/MarkupSafe-2.1.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/62/0f/52c009332fdadd484e898dc8f2acca0663c1031b3517070fd34ad9c1b64e/MarkupSafe-2.1.0.tar.gz.asc
 Summary  : Safely add untrusted strings to HTML/XML markup.
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -24,17 +24,13 @@ BuildRequires : pypi-tox
 BuildRequires : pypi-virtualenv
 
 %description
+MarkupSafe
 ==========
-        
-        MarkupSafe implements a text object that escapes characters so it is
-        safe to use in HTML and XML. Characters that have special meanings are
-        replaced so that they display as the actual characters. This mitigates
-        injection attacks, meaning untrusted user input can safely be displayed
-        on a page.
-        
-        
-        Installing
-        ----------
+MarkupSafe implements a text object that escapes characters so it is
+safe to use in HTML and XML. Characters that have special meanings are
+replaced so that they display as the actual characters. This mitigates
+injection attacks, meaning untrusted user input can safely be displayed
+on a page.
 
 %package license
 Summary: license components for the MarkupSafe package.
@@ -65,15 +61,15 @@ python3 components for the MarkupSafe package.
 
 
 %prep
-%setup -q -n MarkupSafe-2.0.1
-cd %{_builddir}/MarkupSafe-2.0.1
+%setup -q -n MarkupSafe-2.1.0
+cd %{_builddir}/MarkupSafe-2.1.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1644185091
+export SOURCE_DATE_EPOCH=1645206226
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -86,7 +82,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/MarkupSafe
-cp %{_builddir}/MarkupSafe-2.0.1/LICENSE.rst %{buildroot}/usr/share/package-licenses/MarkupSafe/e32a549b135c4b2b268107adc12d13cca2ca1e8c
+cp %{_builddir}/MarkupSafe-2.1.0/LICENSE.rst %{buildroot}/usr/share/package-licenses/MarkupSafe/e32a549b135c4b2b268107adc12d13cca2ca1e8c
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
