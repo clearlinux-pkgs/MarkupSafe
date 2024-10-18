@@ -6,10 +6,10 @@
 # autospec commit: f35655a
 #
 Name     : MarkupSafe
-Version  : 3.0.1
-Release  : 95
-URL      : https://files.pythonhosted.org/packages/b4/d2/38ff920762f2247c3af5cbbbbc40756f575d9692d381d7c520f45deb9b8f/markupsafe-3.0.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/b4/d2/38ff920762f2247c3af5cbbbbc40756f575d9692d381d7c520f45deb9b8f/markupsafe-3.0.1.tar.gz
+Version  : 3.0.2
+Release  : 96
+URL      : https://files.pythonhosted.org/packages/b2/97/5d42485e71dfc078108a86d6de8fa46db44a1a9295e89c5d6d4a06e23a62/markupsafe-3.0.2.tar.gz
+Source0  : https://files.pythonhosted.org/packages/b2/97/5d42485e71dfc078108a86d6de8fa46db44a1a9295e89c5d6d4a06e23a62/markupsafe-3.0.2.tar.gz
 Summary  : Safely add untrusted strings to HTML/XML markup.
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -64,10 +64,10 @@ python3 components for the MarkupSafe package.
 
 
 %prep
-%setup -q -n markupsafe-3.0.1
-cd %{_builddir}/markupsafe-3.0.1
+%setup -q -n markupsafe-3.0.2
+cd %{_builddir}/markupsafe-3.0.2
 pushd ..
-cp -a markupsafe-3.0.1 buildavx2
+cp -a markupsafe-3.0.2 buildavx2
 popd
 
 %build
@@ -75,7 +75,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1728421475
+export SOURCE_DATE_EPOCH=1729272677
 export GCC_IGNORE_WERROR=1
 CLEAR_INTERMEDIATE_CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CLEAR_INTERMEDIATE_FCFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
